@@ -9,10 +9,40 @@ output: pdf_document
 # output: html_document
 ---
 
+
 # Introduction
 
+## Transfer functions of descriptor systems
+
  * Descriptor systems have an ODE part and an algebraic part
-   * in terms of transfer functions
+ \begin{align*}
+ \begin{bmatrix}
+	 I & 0 \\ 0 & N
+ \end{bmatrix} \dot x 
+ & = 
+ \begin{bmatrix}
+	 A & 0 \\ 0 & I
+ \end{bmatrix} x +
+ \begin{bmatrix}
+	 B^{\mathsf{d}}  \\ B^{\mathsf{a}}
+ \end{bmatrix}u \\
+ y  & =
+ \begin{bmatrix}
+	 C^{\mathsf{d}}  & C^{\mathsf{a}}
+ \end{bmatrix}x \\
+ \begin{bmatrix}
+	 sI-A & 0 \\ 0 & sN-I
+ \end{bmatrix}^{-1} 
+ \end{align*}
+
+ * in terms of transfer functions
+
+ \begin{align*}
+ \begin{bmatrix}
+	 C^{\mathsf{d}}  & C^{\mathsf{a}}
+ \end{bmatrix}
+ \end{align*}
+
    * ODE part -- the strictly proper part
    * algebraic part -- polynomial part (only proper and more)
 
@@ -42,4 +72,3 @@ output: pdf_document
  1. DAE Riccati Feeback == ZDG Feedback
 
  2. The projected DAE Riccati simply neglects $D_{11}$
-
