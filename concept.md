@@ -196,7 +196,7 @@ $$
 \sigma_{\max{}}(D_{11}) < \gamma^2, \quad\text{implying that}\quad -\gamma^2 I+D_{11}^*D_{11} \text{ is invertible}
 $$
 
-Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil
+Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., ZDG Ch. 17.4]
 
 \begin{equation*}
 	\begin{split}
@@ -210,7 +210,7 @@ Then, with $X_\infty$ being a stabilizing solution to the Riccati equation assoc
 \end{bmatrix}
 \end{split}
 \end{equation*}
-and $u=-B_2X_\infty x$ from $\int_0^\infty x^*X_\infty x dt = 0$, one derives
+and $u=-B_2X_\infty x$ from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$, one derives
 that
 $$
 \tnsqrd{z} = \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} = \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}
@@ -230,5 +230,51 @@ $$
 
 Define the feedback as $-\mybt \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equations
 $$
-\mathcal A^* X + X^* \mathcal A + X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal EX = X^*\mathcal E.
+\mathcal A^* X + X^* \mathcal A + X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
 $$
+
+For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$,  can show that
+
+* if $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and the $(H_\infty)$ has a stabilizing solution, then
+  1. $\Xinf$ exists, is admissable, and looks like 
+	$\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
+	2. $\Xinf$ is the stabilizing solution associated with $H_\infty$
+
+Thus,
+
+* the feedback $u = -\mybt \Xinf x = -B_2\pd X_\infty x\pd$ is the same as in the standard case
+
+* the $\Hinf$-performance bound,
+  $$
+  \tnsqrd{z} = \tnsqrd{C_1\pd x\pd-C_1\pa B_1\pa w}+\tnsqrd{u} \leq \gamma^2\tnsqrd{w}
+  $$
+  follows 
+
+* directly from examining $\frac{d}{dt}x^*\mathcal E^*\Xinf x$
+* or from the equivalence to the LTI system and the feedback
+
+## What about the symmetric Riccati Equation
+
+For the considered the projected^[see Benner\&Stykel'14] Riccati equation
+
+$$
+\mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A + X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^* 
+$$
+
+the special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
+
+* $P=P^*=\indoe$
+* $X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
+
+and that $X_{11}$ of a stabilizing solution $\mathcal X$ 
+
+* coincides with $X_\infty$ with $D_{11}=0$. 
+* the feedback $u=-B_2\mathcal Xx$ ensures the following performance bound
+  $$
+	\tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = \tnsqrd{z+C_1\pa D_1\pa w} = \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}
+  $$
+* which is at odds with the goal of 
+\begin{align*}
+	\tnsqrd{z} &= \tnsqrd{C_1\pd x\pd + C_1\pa x\pa} + \tnsqrd{u} \\
+	&= \tnsqrd{C_1\pd x\pd - C_1\pa B_1\pa w} + \tnsqrd{u} < \gamma^2\tnsqrd{w}
+\end{align*}
