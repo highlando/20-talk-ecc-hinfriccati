@@ -5,51 +5,55 @@ date: \today
 institute: CSC
 # output: binb::metropolis
 # output: ioslides_presentation
-output: pdf_document
+# output: pdf_document
 # output: html_document
 ---
 
-\include{def}
-
 # Introduction
+
+-----
 
 ## Transfer functions of descriptor systems
 
 * Descriptor systems have an ODE part and an algebraic part
  \begin{align*}
  \begin{bmatrix}
-	 I & 0 \\ 0 & N
+ I & 0 \\ 0 & N
  \end{bmatrix} \dot x 
  & = 
  \begin{bmatrix}
-	 A & 0 \\ 0 & I
+ A & 0 \\ 0 & I
  \end{bmatrix} x +
  \begin{bmatrix}
-	 B^{\mathsf{d}}  \\ B^{\mathsf{a}}
+ B^{\mathsf{d}}  \\ B^{\mathsf{a}}
  \end{bmatrix}u \\
  y  & =
  \begin{bmatrix}
-	 C^{\mathsf{d}}  & C^{\mathsf{a}}
+ C^{\mathsf{d}}  & C^{\mathsf{a}}
  \end{bmatrix}x 
  \end{align*}
 
-* in terms of transfer functions
- \begin{align*}
- \begin{bmatrix}
-	 C^{\mathsf{d}}  & C^{\mathsf{a}}
- \end{bmatrix}
- \begin{bmatrix}
-	 sI-A & 0 \\ 0 & sN-I
- \end{bmatrix}^{-1} 
- \begin{bmatrix}
-	 B\pd  \\ B\pa
- \end{bmatrix}
- & = C\pd(sI-A)^{-1}B\pd + C\pa\sum_{i=0}^{\nu}(sN)^iB\pa \\
- & = G\pd(s) + G\pa(s)
- \end{align*}
+-----
 
-* ODE part $G\pd$ -- the strictly proper part
+* in terms of transfer functions
+\begin{align*}
+  \begin{bmatrix}
+    C^{\mathsf{d}}  & C^{\mathsf{a}}
+  \end{bmatrix}
+  \begin{bmatrix}
+    sI-A & 0 \\ 0 & sN-I
+  \end{bmatrix}^{-1} 
+  \begin{bmatrix}
+    B\pd  \\ B\pa
+  \end{bmatrix}
+  & = C\pd(sI-A)^{-1}B\pd + C\pa\sum_{i=0}^{\nu}(sN)^iB\pa \\
+  & = G\pd(s) + G\pa(s)
+\end{align*}
+
+* ODE part $\Large G\pd$ -- the strictly proper part
 * algebraic part $G\pd$ -- polynomial part (only proper ($\nu=1$) and more)
+
+-----
 
 ##  The pseudo DAE approach with Riccati eqns.
 
@@ -61,7 +65,7 @@ output: pdf_document
   + for model reduction -- no objections 
     - see the $B\pa \neq 0$ section in HeiSS
   + for control -- OK, as long as the polynomial part is zero
-	  - Benner/Heiland/Weichelt: $B\pa=0$
+    - Benner/Heiland/Weichelt: $B\pa=0$
 
 * for control of DAEs through Riccati equations
   * the Riccatis need to consider the algebraic part
@@ -70,9 +74,9 @@ output: pdf_document
 ## Show case -- Hinf-control of a Descriptor System with an Index-1 Pencil
 
 \begin{align*}
-	E\dot{x} &= Ax\phantom{_1} + B_1w\phantom{_1} + B_2 u, \\
-				z &= C_1 x + D_{11} w + D_{12} u, \\
-				y &= C_2 x + D_{21} w + D_{22} u.
+E\dot{x} &= Ax\phantom{_1} + B_1w\phantom{_1} + B_2 u, \\
+  z &= C_1 x + D_{11} w + D_{12} u, \\
+  y &= C_2 x + D_{21} w + D_{22} u.
 \end{align*}
 
 * generally written as $\Sigma \sim (E,A,[B_1,B_2],[C_1,C_2],D)$
@@ -102,9 +106,9 @@ $$
 ## For this presentation
 
 * assume we can do state-feedback
-    - then the suboptimal $\Hinf$ control problem reads
-	  - find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
-		- and such that $\|T_{zw}\|_\infty = \|[C_1-D_{12}K](\cdot E-(A-B_2K))^{-1}B_1+D_{11}\|_\infty < \gamma$
+  - then the suboptimal $\Hinf$ control problem reads
+    1. find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
+    2. and such that $\|T_{zw}\|_\infty = \|[C_1-D_{12}K](\cdot E-(A-B_2K))^{-1}B_1+D_{11}\|_\infty < \gamma$
 
 ## Gonna show
 
@@ -117,25 +121,25 @@ In this *index-1* case,
 ## Make it the Standard Plant
 
 \begin{align*}
-	\left[
-	\begin{array}{c|cc}
-		\msEAwcf & \Bosf & \Btsf \\
-		\hline\\[-.9em]
-		\Cosf & 0 & \Dotsf \\
-		\Ctsf & \Dtosf & 0 \\
-	\end{array}
-	\right].
+\left[
+\begin{array}{c|cc}
+\msEAwcf & \Bosf & \Btsf \\
+\hline\\[-.9em]
+\Cosf & 0 & \Dotsf \\
+\Ctsf & \Dtosf & 0 \\
+\end{array}
+\right].
 \end{align*}
 or, equivalently,
 \begin{align*}
-	\left[
-	\begin{array}{c|cc}
-		-sI+J & \sfBo & \sfBt \\
-		\hline\\[-.9em]
-		\sfCo & \Doosf & \Dotsf \\
-		\sfCt & \Dtosf & 0 \\
-	\end{array}
-	\right].
+\left[
+\begin{array}{c|cc}
+-sI+J & \sfBo & \sfBt \\
+\hline\\[-.9em]
+\sfCo & \Doosf & \Dotsf \\
+\sfCt & \Dtosf & 0 \\
+\end{array}
+\right].
 \end{align*}
 
 # Direct estimation of the $\Hinf$-performance gain
@@ -199,14 +203,14 @@ $$
 Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., ZDG Ch. 17.4]
 
 \begin{equation*}
-	\begin{split}
+\begin{split}
 &\begin{bmatrix}
-		-sI+A & 0 \\
-		{C_1\pd}^*{C_1\pd} & -sI - A^*
-	\end{bmatrix} \\
+-sI+A & 0 \\
+{C_1\pd}^*{C_1\pd} & -sI - A^*
+\end{bmatrix} \\
 &-\begin{bmatrix}
-	- B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd & B_{2}\pd {B_{2}\pd}^* + B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*\\
-	- {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd &  {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*
+- B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd & B_{2}\pd {B_{2}\pd}^* + B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*\\
+- {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd &  {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*
 \end{bmatrix}
 \end{split}
 \end{equation*}
@@ -237,8 +241,8 @@ For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$,  ca
 
 * if $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and the $(H_\infty)$ has a stabilizing solution, then
   1. $\Xinf$ exists, is admissable, and looks like 
-	$\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
-	2. $\Xinf$ is the stabilizing solution associated with $H_\infty$
+$\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
+2. $\Xinf$ is the stabilizing solution associated with $H_\infty$
 
 Thus,
 
@@ -270,11 +274,14 @@ and that $X_{11}$ of a stabilizing solution $\mathcal X$
 
 * coincides with $X_\infty$ with $D_{11}=0$. 
 * the feedback $u=-B_2\mathcal Xx$ ensures the following performance bound
-  $$
-	\tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = \tnsqrd{z+C_1\pa D_1\pa w} = \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}
-  $$
-* which is at odds with the goal of 
 \begin{align*}
-	\tnsqrd{z} &= \tnsqrd{C_1\pd x\pd + C_1\pa x\pa} + \tnsqrd{u} \\
-	&= \tnsqrd{C_1\pd x\pd - C_1\pa B_1\pa w} + \tnsqrd{u} < \gamma^2\tnsqrd{w}
+  \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = \tnsqrd{z-D_{11} w} = \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}
 \end{align*}
+  which simply disregards the feedthrough.
+
+# Conclusion
+
+* For control, a Riccati equation has to respect the algebraic components
+* If $(E,A)$ is index-1, then the Descriptor system is equvalent to a standard system LTI with feedthrough
+* For state-feedback the suboptimal $\Hinf$-controller can be defined and estimated explicitly
+* The non-symmetric Riccati approach coincides with the standard results
