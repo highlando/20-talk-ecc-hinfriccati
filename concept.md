@@ -8,7 +8,7 @@ institute: CSC
 # output: pdf_document
 # output: html_document
 ---
-\usepackage{def}
+
 # Introduction
 
 -----
@@ -71,6 +71,8 @@ institute: CSC
   * the Riccatis need to consider the algebraic part
   * see, e.g., M\"ockel/Reis/Stykel
 
+-----
+
 ## Show case -- Hinf-control of a Descriptor System with an Index-1 Pencil
 
 \begin{align*}
@@ -88,10 +90,15 @@ $$
 \Sigma\sim \bigl(\indoe,\indoa,\genbobt,\gencoct,D\bigr)
 $$
 
+-----
+
+
 * **wlog**: $D=0$:
 $$
 \Sigma\sim \bigl(\indoe,\indoa,\tgenbobt,\tgencoct,0 \bigr)
 $$
+
+-----
 
 * **assumption** $B_2\pa=0$, $C_2\pa=0$
 $$
@@ -103,12 +110,16 @@ $$
 \Sigma\sim \bigl(I,A,\begin{bmatrix}B_1\pd&B_2\pd\end{bmatrix},\begin{bmatrix}C_1\pd\\C_2\pd\end{bmatrix},D \bigr)
 $$
 
+-----
+
 ## For this presentation
 
 * assume we can do state-feedback
   - then the suboptimal $\Hinf$ control problem reads
     1. find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
     2. and such that $\|T_{zw}\|_\infty = \|[C_1-D_{12}K](\cdot E-(A-B_2K))^{-1}B_1+D_{11}\|_\infty < \gamma$
+
+-----
 
 ## Gonna show
 
@@ -117,6 +128,8 @@ In this *index-1* case,
 1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$
 
 2. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$
+
+-----
 
 ## Make it the Standard Plant
 
@@ -143,6 +156,8 @@ or, equivalently,
 \end{align*}
 
 # Direct estimation of the $\Hinf$-performance gain
+
+-----
 
 ## Warm-up: LTI with no feedthrough
 
@@ -172,6 +187,9 @@ one derives
 &= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
 \end{align*}
 
+-----
+
+
 No choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
 
 $$
@@ -182,6 +200,8 @@ $$
 \|z\|^2_{\mathcal L_2} = \gamma^2 \|w\|^2 _{\mathcal L_2}- \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 _{\mathcal L_2}
 $$
 i.e., $\| T_{zw} \| < \gamma$.
+
+-----
 
 ## LTI with feedthrough from $z \to w$
 
@@ -221,6 +241,8 @@ $$
 $$
 where $\sqrod$ is a (Cholesky) factor of $I-\gpmt D_{11}^*D_{11}$.
 
+-----
+
 ## Same System but as a Descriptor
 
 $$
@@ -237,12 +259,18 @@ $$
 \mathcal A^* X + X^* \mathcal A + X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
 $$
 
+-----
+
+
 For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$,  can show that
 
 * if $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and the $(H_\infty)$ has a stabilizing solution, then
   1. $\Xinf$ exists, is admissable, and looks like 
 $\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
 2. $\Xinf$ is the stabilizing solution associated with $H_\infty$
+
+-----
+
 
 Thus,
 
@@ -256,6 +284,8 @@ Thus,
 
 * directly from examining $\frac{d}{dt}x^*\mathcal E^*\Xinf x$
 * or from the equivalence to the LTI system and the feedback
+
+-----
 
 ## What about the symmetric Riccati Equation
 
@@ -278,6 +308,8 @@ and that $X_{11}$ of a stabilizing solution $\mathcal X$
   \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = \tnsqrd{z-D_{11} w} = \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}
 \end{align*}
   which simply disregards the feedthrough.
+
+-----
 
 # Conclusion
 
