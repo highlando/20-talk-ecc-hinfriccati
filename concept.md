@@ -36,6 +36,7 @@ institute: CSC
 -----
 
 * in terms of transfer functions
+\begin{small}
 \begin{align*}
   \begin{bmatrix}
     C^{\mathsf{d}}  & C^{\mathsf{a}}
@@ -43,15 +44,16 @@ institute: CSC
   \begin{bmatrix}
     sI-A & 0 \\ 0 & sN-I
   \end{bmatrix}^{-1} 
-  \begin{bmatrix}
+  & \begin{bmatrix}
     B\pd  \\ B\pa
-  \end{bmatrix}
+  \end{bmatrix}\\
   & = C\pd(sI-A)^{-1}B\pd + C\pa\sum_{i=0}^{\nu}(sN)^iB\pa \\
   & = G\pd(s) + G\pa(s)
 \end{align*}
+\end{small}
 
-* ODE part $\Large G\pd$ -- the strictly proper part
-* algebraic part $G\pd$ -- polynomial part (only proper ($\nu=1$) and more)
+* ODE part $G\pd$ -- the strictly proper part
+* algebraic part $G\pd$ -- polynomial part <!--(only proper ($\nu=1$) and more)-->
 
 -----
 
@@ -157,8 +159,6 @@ or, equivalently,
 
 # Direct estimation of the $\Hinf$-performance gain
 
------
-
 ## Warm-up: LTI with no feedthrough
 
 Consider the standard LTI case with $D=0$ with standard assumptions.
@@ -167,6 +167,8 @@ Let $\gamma>0$ and $X_\infty$ be a stabilizing solution to the $\Hinf$-Riccati e
 $$
 A^*X + XA - X(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0
 $$
+
+-----
 
 then, for $x$ being a trajectory to 
 
@@ -178,14 +180,16 @@ z = \begin{bmatrix} C_1x \\ u \end{bmatrix},
 $$
 
 one derives 
-
+\begin{footnotesize}
 \begin{align*}
-\frac{d}{dt}x^*X_\infty x 
-&= \dot x^* X_\infty x + x^* x_\infty \dot x = (x^*A^*+w^*B_1^*+u^*B_2^*)X_\infty x + x^*X_\infty(Ax+B_1 w + B_2 u) \\
+\frac{d}{dt}&x^*X_\infty x=  \\
+&= \dot x^* X_\infty x + x^* x_\infty \dot x \\
+&= (x^*A^*+w^*B_1^*+u^*B_2^*)X_\infty x + x^*X_\infty(Ax+B_1 w + B_2 u) \\
 &= -x^*C_1^*C_1x + x^*X_\infty(B_2B_2^* - \gpmt B_1B_1^*)X_\infty x + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
 &= -\|C_1x \|^2 + \|B_2 X_\infty x\|^2  - \gpmt\|B_1^*X_\infty x\|^2 + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
 &= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
 \end{align*}
+\end{footnotesize}
 
 -----
 
