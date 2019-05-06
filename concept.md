@@ -11,8 +11,6 @@ institute: CSC
 
 # Introduction
 
------
-
 ## Transfer functions of descriptor systems
 
 * Descriptor systems have an ODE part and an algebraic part
@@ -74,18 +72,19 @@ institute: CSC
   * see, e.g., M\"ockel/Reis/Stykel
 
 -----
+# Hinf-control of a Descriptor System with an Index-1 Pencil
 
-## Show case -- Hinf-control of a Descriptor System with an Index-1 Pencil
+## The basic equations
 
 \begin{align*}
-E\dot{x} &= Ax\phantom{_1} + B_1w\phantom{_1} + B_2 u, \\
+\mathcal E\dot{x} &= \mathcal Ax\phantom{_1} + B_1w\phantom{_1} + B_2 u, \\
   z &= C_1 x + D_{11} w + D_{12} u, \\
   y &= C_2 x + D_{21} w + D_{22} u.
 \end{align*}
 
-* generally written as $\Sigma \sim (E,A,[B_1,B_2],[C_1,C_2],D)$
+* generally written as $\Sigma \sim (\mathcal E,\mathcal A,[B_1,B_2],[C_1,C_2],D)$
 
-* **Assumption**: $(E, A)$ is of index 1
+* **Assumption**: $(\mathcal E, \mathcal A)$ is of index 1
 
 * **wlog**:
 $$
@@ -119,17 +118,19 @@ $$
 * assume we can do state-feedback
   - then the suboptimal $\Hinf$ control problem reads
     1. find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
-    2. and such that $\|T_{zw}\|_\infty = \|[C_1-D_{12}K](\cdot E-(A-B_2K))^{-1}B_1+D_{11}\|_\infty < \gamma$
+    2. and such that, with $u=-B_2Kx$, the map of the perturbance to the performance output is bounded, i.e. $$\|z\|_2 < \gamma \|w\|_2$$
 
 -----
 
-## Gonna show
+## Main results
 
 In this *index-1* case,
 
 1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$
 
-2. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$
+2. The non-symmetric DAE Riccati equation recovers the original results.
+
+3. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$
 
 -----
 
@@ -163,7 +164,7 @@ or, equivalently,
 
 Consider the standard LTI case with $D=0$ with standard assumptions.
 
-Let $\gamma>0$ and $X_\infty$ be a stabilizing solution to the $\Hinf$-Riccati equations
+Let $\gamma>0$ and $X_\infty$ be a stabilizing solution to the $\Hinf$-Riccati equation
 $$
 A^*X + XA - X(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0
 $$
@@ -194,16 +195,16 @@ one derives
 -----
 
 
-No choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
+No choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2(0,\infty)$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
 
 $$
-0 = -\|z\|^2_{\mathcal L_2} + \gamma^2 \|w\|^2 _{\mathcal L_2}- \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 _{\mathcal L_2}
+0 = -\tnsqrd{z} + \gamma^2 \tnsqrd{w}- \gamma^2 \tnsqrd{w-\gpmt B_1^*X_\infty x }
 $$
 or
 $$
-\|z\|^2_{\mathcal L_2} = \gamma^2 \|w\|^2 _{\mathcal L_2}- \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 _{\mathcal L_2}
+\tnsqrd{z} = \gamma^2 \tnsqrd{w}- \gamma^2 \tnsqrd{w-\gpmt B_1^*X_\infty x }
 $$
-i.e., $\| T_{zw} \| < \gamma$.
+i.e., $\| T_{zw} \| \leq \gamma$.
 
 -----
 
@@ -224,8 +225,11 @@ $$
 \sigma_{\max{}}(D_{11}) < \gamma^2, \quad\text{implying that}\quad -\gamma^2 I+D_{11}^*D_{11} \text{ is invertible}
 $$
 
+-----
+
 Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., ZDG Ch. 17.4]
 
+\begin{small}
 \begin{equation*}
 \begin{split}
 &\begin{bmatrix}
@@ -238,11 +242,14 @@ Then, with $X_\infty$ being a stabilizing solution to the Riccati equation assoc
 \end{bmatrix}
 \end{split}
 \end{equation*}
+\end{small}
+
 and $u=-B_2X_\infty x$ from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$, one derives
 that
-$$
-\tnsqrd{z} = \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} = \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}
-$$
+\begin{align*}
+\tnsqrd{z} =& \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} \\
+&= \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}
+\end{align*}
 where $\sqrod$ is a (Cholesky) factor of $I-\gpmt D_{11}^*D_{11}$.
 
 -----
@@ -258,7 +265,7 @@ z = \begin{bmatrix} \myco x  \\ u \end{bmatrix}
 $$
 (note that there is no $D$)
 
-Define the feedback as $-\mybt \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equations
+Define the feedback as $-\mybt \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equation
 $$
 \mathcal A^* X + X^* \mathcal A + X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
 $$
@@ -266,12 +273,12 @@ $$
 -----
 
 
-For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$,  can show that
+For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$, we can show that
 
 * if $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and the $(H_\infty)$ has a stabilizing solution, then
   1. $\Xinf$ exists, is admissable, and looks like 
 $\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
-2. $\Xinf$ is the stabilizing solution associated with $H_\infty$
+  2. $\xinf$ is the stabilizing solution associated with the Hamiltonian pencil of the LTI with $D_{11}=-C_1\pa B_1\pa$.
 
 -----
 
@@ -293,25 +300,24 @@ Thus,
 
 ## What about the symmetric Riccati Equation
 
-For the considered the projected^[see Benner\&Stykel'14] Riccati equation
+For the considered case, the projected^[see Benner\&Stykel'14] Riccati equation reads
 
 $$
 \mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A + X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^* 
 $$
 
-the special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
+The special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
 
-* $P=P^*=\indoe$
-* $X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
+* $P=P^*=\indoe$ and $X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
 
 and that $X_{11}$ of a stabilizing solution $\mathcal X$ 
 
 * coincides with $X_\infty$ with $D_{11}=0$. 
-* the feedback $u=-B_2\mathcal Xx$ ensures the following performance bound
-\begin{align*}
-  \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = \tnsqrd{z-D_{11} w} = \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}
-\end{align*}
-  which simply disregards the feedthrough.
+* the feedback $u=-B_2\mathcal Xx$ ensures that
+* $\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = 
+\gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}$
+<!-- \tnsqrd{z-D_{11} w} = -->
+* which simply disregards the feedthrough.
 
 -----
 
