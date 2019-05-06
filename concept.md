@@ -3,15 +3,12 @@ title: Riccati-based $H_\infty$-control for DAEs
 author: Jan Heiland
 date: \today
 institute: CSC
-# output: binb::metropolis
-# output: ioslides_presentation
-# output: pdf_document
-# output: html_document
+bibliography: bib-dae-hinf.bibtex
 ---
 
 # Introduction
 
-## Transfer functions of descriptor systems
+## Descriptor systems
 
 * Descriptor systems have an ODE part and an algebraic part
  \begin{align*}
@@ -31,9 +28,9 @@ institute: CSC
  \end{bmatrix}x 
  \end{align*}
 
------
+## Transfer functions
 
-* in terms of transfer functions
+* in frequency domain
 \begin{small}
 \begin{align*}
   \begin{bmatrix}
@@ -51,28 +48,26 @@ institute: CSC
 \end{small}
 
 * ODE part $G\pd$ -- the strictly proper part
+
 * algebraic part $G\pd$ -- polynomial part <!--(only proper ($\nu=1$) and more)-->
 
------
+##  MOR/Control with DAE-Riccati
 
-##  The pseudo DAE approach with Riccati eqns.
+* Reduce/control the ODE part, keep the polynomial part
 
-* reduce/control the ODE part, keep the polynomial part
-  + see HeiSS08 
-  + et al. that follows these lines Benner, Goyal, Gugercin, Heiland, Stykel, Weichelt
+* see Heinkenschloss\&Sorensen\&Sun'08 et al. that follows these lines [Benner, Goyal, Gugercin, Heiland, Stykel, Weichelt, ...]
 
-* this is ODE theory 
-  + for model reduction -- no objections 
-    - see the $B\pa \neq 0$ section in HeiSS
-  + for control -- OK, as long as the polynomial part is zero
-    - Benner/Heiland/Weichelt: $B\pa=0$
+* for model reduction -- no objections 
 
-* for control of DAEs through Riccati equations
-  * the Riccatis need to consider the algebraic part
-  * see, e.g., M\"ockel/Reis/Stykel
+    + see the $B\pa \neq 0$ section in Heinkenschloss et al.
 
------
-# Hinf-control of a Descriptor System with an Index-1 Pencil
+* for control -- OK, as long as the polynomial part is zero
+
+    + in fact, in Benner, Heiland, Weichelt: $B\pa=0$
+    + if not, the Riccatis need to consider the algebraic part
+    + see, e.g., M&ouml;ckel\&Reis\&Stykel
+
+# $\Hinf$-control of a Descriptor System with an Index-1 pencil
 
 ## The basic equations
 
@@ -86,7 +81,7 @@ institute: CSC
 
 * **Assumption**: $(\mathcal E, \mathcal A)$ is of index 1
 
-* **wlog**:
+* **wlog**: Weierstra&szlig; Canonical Form
 $$
 \Sigma\sim \bigl(\indoe,\indoa,\genbobt,\gencoct,D\bigr)
 $$
@@ -101,41 +96,44 @@ $$
 
 -----
 
-* **assumption** $B_2\pa=0$, $C_2\pa=0$
+* **Assumption**: $B_2\pa=0$, $C_2\pa=0$
 $$
 \Sigma\sim \bigl(\indoe,\indoa,\mybobt,\mycoct,0 \bigr)
 $$
 
-* **equivalence** to an LTI with $D=-C_1^IB_1^I$
+* **Equivalence**: this is a standard LTI with $D=-C_1^IB_1^I$
 $$
 \Sigma\sim \bigl(I,A,\begin{bmatrix}B_1\pd&B_2\pd\end{bmatrix},\begin{bmatrix}C_1\pd\\C_2\pd\end{bmatrix},D \bigr)
 $$
 
------
+# Direct estimation of the $\Hinf$-performance gain
 
 ## For this presentation
 
-* assume we can do state-feedback
+* We assume that we can do state-feedback
+
   - then the suboptimal $\Hinf$ control problem reads
+
     1. find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
+
     2. and such that, with $u=-B_2Kx$, the map of the perturbance to the performance output is bounded, i.e. $$\|z\|_2 < \gamma \|w\|_2$$
 
------
 
 ## Main results
 
 In this *index-1* case,
 
-1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$
+1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$.
 
 2. The non-symmetric DAE Riccati equation recovers the original results.
 
-3. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$
+3. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$.
 
------
+<!-- ## Make it a Standard Plant
 
-## Make it the Standard Plant
+Add the input to $u$ the performance output $w$:
 
+\begin{small}
 \begin{align*}
 \left[
 \begin{array}{c|cc}
@@ -144,9 +142,13 @@ In this *index-1* case,
 \Cosf & 0 & \Dotsf \\
 \Ctsf & \Dtosf & 0 \\
 \end{array}
-\right].
+\right],
 \end{align*}
+\end{small}
+
 or, equivalently,
+
+\begin{small}
 \begin{align*}
 \left[
 \begin{array}{c|cc}
@@ -157,19 +159,18 @@ or, equivalently,
 \end{array}
 \right].
 \end{align*}
+\end{small}
 
-# Direct estimation of the $\Hinf$-performance gain
+-->
 
-## Warm-up: LTI with no feedthrough
+## LTI with $D=0$
 
 Consider the standard LTI case with $D=0$ with standard assumptions.
 
 Let $\gamma>0$ and $X_\infty$ be a stabilizing solution to the $\Hinf$-Riccati equation
 $$
-A^*X + XA - X(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0
+A^*X + XA - X(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0,
 $$
-
------
 
 then, for $x$ being a trajectory to 
 
@@ -179,6 +180,8 @@ and
 $$
 z = \begin{bmatrix} C_1x \\ u \end{bmatrix},
 $$
+
+## ctd.
 
 one derives 
 \begin{footnotesize}
@@ -192,10 +195,16 @@ one derives
 \end{align*}
 \end{footnotesize}
 
------
+## ctd.
 
+\begin{footnotesize}
+\begin{align*}
+\frac{d}{dt}&x^*X_\infty x=  \\
+&= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
+\end{align*}
+\end{footnotesize}
 
-No choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2(0,\infty)$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
+Now choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2(0,\infty)$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
 
 $$
 0 = -\tnsqrd{z} + \gamma^2 \tnsqrd{w}- \gamma^2 \tnsqrd{w-\gpmt B_1^*X_\infty x }
@@ -206,9 +215,7 @@ $$
 $$
 i.e., $\| T_{zw} \| \leq \gamma$.
 
------
-
-## LTI with feedthrough from $z \to w$
+## LTI with feed through
 
 Consider 
 
@@ -222,12 +229,12 @@ $$
 Necessary for a closed-loop $\| T_{zw} \|_\infty < \gamma$: 
 
 $$
-\sigma_{\max{}}(D_{11}) < \gamma^2, \quad\text{implying that}\quad -\gamma^2 I+D_{11}^*D_{11} \text{ is invertible}
+\sigma_{\max{}}(D_{11}) < \gamma^2, \quad\text{implying that}\quad -\gamma^2 I+D_{11}^*D_{11} \text{ is invertible}.
 $$
 
------
+## The modified Hamiltonian
 
-Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., ZDG Ch. 17.4]
+Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., @ZhoDG96, Ch. 17.4]
 
 \begin{small}
 \begin{equation*}
@@ -252,32 +259,34 @@ that
 \end{align*}
 where $\sqrod$ is a (Cholesky) factor of $I-\gpmt D_{11}^*D_{11}$.
 
------
-
-## Same System but as a Descriptor
+## As a descriptor system
 
 $$
 \indoe \dot x = \indoa x + \mybo w + \mybt u
 $$
 with
 $$
-z = \begin{bmatrix} \myco x  \\ u \end{bmatrix}
+z = \begin{bmatrix} \myco x  \\ u \end{bmatrix}.
 $$
-(note that there is no $D$)
+(note that there is no $D$!)
 
 Define the feedback as $-\mybt \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equation
 $$
-\mathcal A^* X + X^* \mathcal A + X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
+\mathcal A^* X + X^* \mathcal A - X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
 $$
 
 -----
 
 
-For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$, we can show that
+For this Riccati equation, with $\mathcal E=\indoe$ and $\mathcal A=\indoa$:
 
-* if $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and the $(H_\infty)$ has a stabilizing solution, then
+### Lemma
+
+If $\sigma_{\max{}}(C_1\pa B_1\pa) = \sigma_{\max{}}(D_{11}) < \gamma^2$ and there exists a $\gamma$-stabilizing controller, then
+
   1. $\Xinf$ exists, is admissable, and looks like 
 $\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
+
   2. $\xinf$ is the stabilizing solution associated with the Hamiltonian pencil of the LTI with $D_{11}=-C_1\pa B_1\pa$.
 
 -----
@@ -285,7 +294,7 @@ $\begin{bmatrix} X_\infty & 0 \\ X_{21} & X_{22} \end{bmatrix}$, where
 
 Thus,
 
-* the feedback $u = -\mybt \Xinf x = -B_2\pd X_\infty x\pd$ is the same as in the standard case
+* the feedback $u = -\mybt \Xinf x = -B_2\pd X_\infty x\pd$ is the same as in the standard case,
 
 * the $\Hinf$-performance bound,
   $$
@@ -294,16 +303,15 @@ Thus,
   follows 
 
 * directly from examining $\frac{d}{dt}x^*\mathcal E^*\Xinf x$
-* or from the equivalence to the LTI system and the feedback
-
------
+* or from the equivalence to the LTI system and the feedback.
 
 ## What about the symmetric Riccati Equation
 
-For the considered case, the projected^[see Benner\&Stykel'14] Riccati equation reads
+<!-- For the considered case, the projected^[see Benner\&Stykel'14] Riccati equation reads -->
+The projected^[see Benner\&Stykel'14] Riccati equation read
 
 $$
-\mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A + X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^* 
+\mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A - X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^*.
 $$
 
 The special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
@@ -312,18 +320,29 @@ The special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply t
 
 and that $X_{11}$ of a stabilizing solution $\mathcal X$ 
 
-* coincides with $X_\infty$ with $D_{11}=0$. 
-* the feedback $u=-B_2\mathcal Xx$ ensures that
-* $\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = 
-\gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x}$
+* coincides with $X_\infty$ with $D_{11}=0$,
+* so that the feedback $u=-B_2\mathcal Xx$ ensures $\gamma$-stability 
+<!-- that
+$$\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = 
+\gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x},$$ -->
 <!-- \tnsqrd{z-D_{11} w} = -->
-* which simply disregards the feedthrough.
-
------
+* only for the case of no feed through. 
 
 # Conclusion
+## Conclusion
 
 * For control, a Riccati equation has to respect the algebraic components
+
 * If $(E,A)$ is index-1, then the Descriptor system is equvalent to a standard system LTI with feedthrough
+
 * For state-feedback the suboptimal $\Hinf$-controller can be defined and estimated explicitly
+
 * The non-symmetric Riccati approach coincides with the standard results
+
+## References
+
+---
+nocite: |
+    @MoeRS11
+...
+
