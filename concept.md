@@ -34,8 +34,8 @@ bibliography:
 ## Transfer functions
 
 * in frequency domain
-\begin{small}
 \begin{align*}
+  \small
   \begin{bmatrix}
     C^{\mathsf{d}}  & C^{\mathsf{a}}
   \end{bmatrix}
@@ -48,7 +48,6 @@ bibliography:
   & = C\pd(sI-A)^{-1}B\pd + C\pa\sum_{i=0}^{\nu}(sN)^iB\pa \\
   & = G\pd(s) + G\pa(s)
 \end{align*}
-\end{small}
 
 * ODE part $G\pd$ -- the strictly proper part
 
@@ -133,8 +132,8 @@ In this *index-1* case,
 
 Add the input to $u$ the performance output $w$:
 
-\begin{small}
 \begin{align*}
+  \small
 \left[
 \begin{array}{c|cc}
 \msEAwcf & \Bosf & \Btsf \\
@@ -144,12 +143,11 @@ Add the input to $u$ the performance output $w$:
 \end{array}
 \right],
 \end{align*}
-\end{small}
 
 or, equivalently,
 
-\begin{small}
 \begin{align*}
+  \small
 \left[
 \begin{array}{c|cc}
 -sI+J & \sfBo & \sfBt \\
@@ -159,7 +157,6 @@ or, equivalently,
 \end{array}
 \right].
 \end{align*}
-\end{small}
 
 -->
 
@@ -184,8 +181,8 @@ $$
 ## ctd.
 
 one derives 
-\begin{small}
 \begin{align*}
+  \small
 \frac{d}{dt}&x^*X_\infty x=  \\
 &= \dot x^* X_\infty x + x^* x_\infty \dot x \\
 &= (x^*A^*+w^*B_1^*+u^*B_2^*)X_\infty x + x^*X_\infty(Ax+B_1 w + B_2 u) \\
@@ -193,7 +190,6 @@ one derives
 &= -\|C_1x \|^2 + \|B_2 X_\infty x\|^2  - \gpmt\|B_1^*X_\infty x\|^2 + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
 &= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
 \end{align*}
-\end{small}
 
 ## ctd.
 
@@ -236,8 +232,8 @@ $$
 
 Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., @ZhoDG96, Ch. 17.4]
 
-\begin{footnotesize}
 \begin{equation*}
+  \small
 \begin{split}
 &\begin{bmatrix}
 -sI+A & 0 \\
@@ -249,18 +245,16 @@ Then, with $X_\infty$ being a stabilizing solution to the Riccati equation assoc
 \end{bmatrix}
 \end{split}
 \end{equation*}
-\end{footnotesize}
 
 and with $u=-B_2X_\infty x$ 
 <!-- from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$ -->
 and $I-\gpmt D_{11}^*D_{11}=\sqrod\sqrod$, one derives
 that
-\begin{small}
 \begin{align*}
+  \small
 \tnsqrd{z} =& \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} \\
 &= \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}.
 \end{align*}
-\end{small}
 
 ## As a descriptor system
 
