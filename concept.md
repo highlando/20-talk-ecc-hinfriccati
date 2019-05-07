@@ -3,7 +3,9 @@ title: Riccati-based $H_\infty$-control for DAEs
 author: Jan Heiland
 date: \today
 institute: CSC
-bibliography: bib-dae-hinf.bibtex
+bibliography: 
+- bib-dae-hinf.bib
+- mor.bib
 ---
 
 # Introduction
@@ -55,7 +57,7 @@ bibliography: bib-dae-hinf.bibtex
 
 * Reduce/control the ODE part, keep the polynomial part
 
-* see Heinkenschloss\&Sorensen\&Sun'08 et al. that follows these lines [Benner, Goyal, Gugercin, Heiland, Stykel, Weichelt, ...]
+* see @morHeiSS08 et al. that follows these lines [Benner, Goyal, Gugercin, Heiland, Stykel, Weichelt, ...]
 
 * for model reduction -- no objections 
 
@@ -65,7 +67,7 @@ bibliography: bib-dae-hinf.bibtex
 
     + in fact, in Benner, Heiland, Weichelt: $B\pa=0$
     + if not, the Riccatis need to consider the algebraic part
-    + see, e.g., M&ouml;ckel\&Reis\&Stykel
+    + see, e.g., @MoeRS11
 
 # $\Hinf$-control of a Descriptor System with an Index-1 pencil
 
@@ -101,7 +103,6 @@ $$
 \Sigma\sim \bigl(\indoe,\indoa,\mybobt,\mycoct,0 \bigr)
 $$
 
-* **Equivalence**: this is a standard LTI with $D=-C_1^IB_1^I$
 $$
 \Sigma\sim \bigl(I,A,\begin{bmatrix}B_1\pd&B_2\pd\end{bmatrix},\begin{bmatrix}C_1\pd\\C_2\pd\end{bmatrix},D \bigr)
 $$
@@ -124,8 +125,6 @@ $$
 In this *index-1* case,
 
 1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$.
-
-2. The non-symmetric DAE Riccati equation recovers the original results.
 
 3. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$.
 
@@ -184,7 +183,7 @@ $$
 ## ctd.
 
 one derives 
-\begin{footnotesize}
+\begin{small}
 \begin{align*}
 \frac{d}{dt}&x^*X_\infty x=  \\
 &= \dot x^* X_\infty x + x^* x_\infty \dot x \\
@@ -193,7 +192,7 @@ one derives
 &= -\|C_1x \|^2 + \|B_2 X_\infty x\|^2  - \gpmt\|B_1^*X_\infty x\|^2 + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
 &= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
 \end{align*}
-\end{footnotesize}
+\end{small}
 
 ## ctd.
 
@@ -236,7 +235,7 @@ $$
 
 Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., @ZhoDG96, Ch. 17.4]
 
-\begin{small}
+\begin{footnotesize}
 \begin{equation*}
 \begin{split}
 &\begin{bmatrix}
@@ -249,15 +248,18 @@ Then, with $X_\infty$ being a stabilizing solution to the Riccati equation assoc
 \end{bmatrix}
 \end{split}
 \end{equation*}
-\end{small}
+\end{footnotesize}
 
-and $u=-B_2X_\infty x$ from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$, one derives
+and with $u=-B_2X_\infty x$ 
+<!-- from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$ -->
+and $I-\gpmt D_{11}^*D_{11}=\sqrod\sqrod$, one derives
 that
+\begin{small}
 \begin{align*}
 \tnsqrd{z} =& \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} \\
-&= \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}
+&= \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}.
 \end{align*}
-where $\sqrod$ is a (Cholesky) factor of $I-\gpmt D_{11}^*D_{11}$.
+\end{small}
 
 ## As a descriptor system
 
@@ -308,7 +310,7 @@ Thus,
 ## What about the symmetric Riccati Equation
 
 <!-- For the considered case, the projected^[see Benner\&Stykel'14] Riccati equation reads -->
-The projected^[see Benner\&Stykel'14] Riccati equation read
+The projected^[see, e.g., @BenS14 ] Riccati equation read
 
 $$
 \mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A - X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^*.
@@ -333,7 +335,7 @@ $$\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} =
 
 * For control, a Riccati equation has to respect the algebraic components
 
-* If $(E,A)$ is index-1, then the Descriptor system is equvalent to a standard system LTI with feedthrough
+* If $(E,A)$ is index-1, then the Descriptor system is equivalent to a standard system LTI with feedthrough
 
 * For state-feedback the suboptimal $\Hinf$-controller can be defined and estimated explicitly
 
