@@ -5,4 +5,7 @@ pandoc concept.md --filter pandoc-citeproc -t beamer --slide-level=2 -o concept-
 pandoc concept.md -o concept-slides.tex --filter pandoc-citeproc --natbib -t beamer --slide-level=2 -H def.tex --table-of-contents -V classoption:aspectratio=43 -V theme=mpi2015 -V themeoptions=$THEMEOPS
 sed -i 's/ignorenonframetext,//' concept-slides.tex
 sed -i 's/\\frame{\\titlepage}/\\maketitle/' concept-slides.tex
-# sed -i 's/slide\slevel2/slide/g' concept-slides.html
+sed -i 's/\\begin{\\footnotesize}//g' concept-slides.html
+sed -i 's/\\end{\\footnotesize}//g' concept-slides.html
+sed -i 's/\\begin{\\small}//g' concept-slides.html
+sed -i 's/\\end{\\small}//g' concept-slides.html
