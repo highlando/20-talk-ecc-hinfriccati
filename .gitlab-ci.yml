@@ -3,6 +3,7 @@ build_docs:
     # Download and install pandoc 
     - apt-get update -y
     - apt-get install -y pandoc
+    - apt-get install -y pandoc-citeproc
   script:
     - source makethedoc.sh
   artifacts:
