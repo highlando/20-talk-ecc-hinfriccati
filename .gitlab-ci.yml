@@ -1,3 +1,5 @@
+image: local:latex
+
 build_docs:
   before_script:
     # Download and install pandoc 
