@@ -1,11 +1,10 @@
-build_pdf:
+build_docs:
   before_script:
     # Download and install pandoc 
     - apt-get update -y
     - apt-get install -y pandoc
   script:
-    - ls -a
-    - source makethedocs.sh
+    - source makethedoc.sh
   artifacts:
     # Attach all untracked files (e.g. files that were recently created and not yet committed to git) as artifacts.
     # These are the files you then download after the job has finished.
