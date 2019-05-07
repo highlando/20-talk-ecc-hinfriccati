@@ -4,8 +4,9 @@ author: Jan Heiland
 date: \today
 institute: CSC
 bibliography: 
-- bib-dae-hinf.bib
-- mor.bib
+- hinf-ric-talk.bib
+# - bib-dae-hinf.bib
+# - mor.bib
 ---
 
 # Introduction
