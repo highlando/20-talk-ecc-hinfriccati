@@ -1,5 +1,5 @@
 ---
-title: Riccati-based $H_\infty$-control for DAEs
+title: Riccati-based $\mathcal H_\infty$-control for DAEs
 author: Jan Heiland
 date: \today
 institute: CSC
@@ -51,7 +51,7 @@ bibliography:
 
 * ODE part $G\pd$ -- the strictly proper part
 
-* algebraic part $G\pd$ -- polynomial part <!--(only proper ($\nu=1$) and more)-->
+* algebraic part $G\pa$ -- polynomial part <!--(only proper ($\nu=1$) and more)-->
 
 ##  MOR/Control with DAE-Riccati
 
@@ -103,19 +103,22 @@ $$
 \Sigma\sim \bigl(\indoe,\indoa,\mybobt,\mycoct,0 \bigr)
 $$
 
+* **Equivalence**: to a standard LTI system with feedthrough
 $$
-\Sigma\sim \bigl(I,A,\begin{bmatrix}B_1\pd&B_2\pd\end{bmatrix},\begin{bmatrix}C_1\pd\\C_2\pd\end{bmatrix},D \bigr)
+\Sigma\sim \bigl(I,A,\begin{bmatrix}B_1\pd&B_2\pd\end{bmatrix},\begin{bmatrix}C_1\pd\\C_2\pd\end{bmatrix},
+  \begin{bmatrix}D_{11}&0\\0&0\end{bmatrix}
+  \bigr)
 $$
 
 # Direct estimation of the $\Hinf$-performance gain
 
 ## For this presentation
 
-* We assume that we can do state-feedback
+* We assume that we can do state-feedback,
 
-  - then the suboptimal $\Hinf$ control problem reads
+* then the suboptimal $\Hinf$ control problem reads
 
-    1. find $\gamma$ and $K$ such that $(E,A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
+    1. find $\gamma$ and $K$ such that $(\mathcal E,\mathcal A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
 
     2. and such that, with $u=-B_2Kx$, the map of the perturbance to the performance output is bounded, i.e. $$\|z\|_2 < \gamma \|w\|_2$$
 
@@ -124,9 +127,9 @@ $$
 
 In this *index-1* case,
 
-1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D$.
+1. Non-symmetric Riccati Feedback is the standard $\Hinf$-Riccati-Feedback for the equivalent ODE system with feedthrough $D_{11}$.
 
-3. The (projected) symmetric DAE Riccati simply neglects the feedthrough $D$.
+3. The (projected) symmetric DAE Riccati simply neglects the feedthrough.
 
 <!-- ## Make it a Standard Plant
 
@@ -302,7 +305,7 @@ Thus,
 * directly from examining $\frac{d}{dt}x^*\mathcal E^*\Xinf x$
 * or from the equivalence to the LTI system and the feedback.
 
-## What about the symmetric Riccati Equation
+## Symmetric Riccati Equation
 
 <!-- For the considered case, the projected^[see Benner\&Stykel'14] Riccati equation reads -->
 The projected^[see, e.g., @BenS14 ] Riccati equation read
@@ -313,7 +316,7 @@ $$
 
 The special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
 
-* $P=P^*=\indoe$ and $X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
+* $P=P^*=\indoe$ and $\mathcal X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
 
 and that $X_{11}$ of a stabilizing solution $\mathcal X$ 
 
@@ -330,7 +333,7 @@ $$\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} =
 
 * For control, a Riccati equation has to respect the algebraic components
 
-* If $(E,A)$ is index-1, then the Descriptor system is equivalent to a standard system LTI with feedthrough
+* If $(\mathcal E,\mathcal A)$ is index-1, then the Descriptor system is equivalent to a standard system LTI with feedthrough
 
 * For state-feedback the suboptimal $\Hinf$-controller can be defined and estimated explicitly
 
