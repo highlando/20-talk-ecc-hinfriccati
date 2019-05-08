@@ -1,9 +1,12 @@
 # Talk: Riccati-based H-infinity-control for DAEs
 
+
+| Title | Riccati-based H-infinity-control for DAEs |
 | ------ | ----- |
 | Author | Jan Heiland
 | Conference | CSC Workshop 2019 (Ringberg)
 | Date | May 8th, 2019 |
+| Length | 15+5 min |
 
 ## Contents
 
