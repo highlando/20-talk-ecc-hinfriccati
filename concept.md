@@ -2,7 +2,7 @@
 title: Riccati-based $\mathcal H_\infty$-control for DAEs
 author: Jan Heiland
 date: \today
-institute: CSC
+institute: CSC Workshop Ringberg 2019
 bibliography: 
 - hinf-ric-talk.bib
 # - bib-dae-hinf.bib
