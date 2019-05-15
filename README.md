@@ -1,3 +1,10 @@
+---
+title: Riccati-based H-infinity-control for DAEs 
+author: Jan Heiland
+date: May 8th, 2019
+length: 15+5 min
+---
+
 # Talk: Riccati-based H-infinity-control for DAEs
 
 
