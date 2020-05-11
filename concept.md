@@ -1,5 +1,5 @@
 ---
-title: Riccati-based $\mathcal H_\infty$-control for DAEs
+title: Riccati-based $\mathcal H _ \infty$-control for DAEs
 author: Jan Heiland
 date: \today
 institute: CSC Workshop Ringberg 2019
@@ -13,8 +13,33 @@ bibliography:
 
 ## Descriptor systems
 
+$$
+\def\pd{^{\mathsf{d}}}
+\def\pa{^{\mathsf{a}}}
+\def\Hinf{\mathcal{H} _ \infty}
+\def\indoe{\begin{bmatrix}I&0\\0&0\end{bmatrix}}
+\def\indoa{\begin{bmatrix}A&0\\0&I\end{bmatrix}}
+\def\genbobt{\begin{bmatrix}B_1 & B_2\end{bmatrix}}
+\def\gencoct{\begin{bmatrix}C_1 \\ C_2\end{bmatrix}}
+\def\tgenbobt{\begin{bmatrix}\tilde B_1 & \tilde B_2\end{bmatrix}}
+\def\tgencoct{\begin{bmatrix}\tilde C_1 \\ \tilde  C_2\end{bmatrix}}
+\def\mybobt{\begin{bmatrix}B_1\pd & B_2\pd \\ B_1\pa & 0\end{bmatrix}}
+\def\mycoct{\begin{bmatrix}C_1\pd & C_1\pa \\ C_2\pd & 0\end{bmatrix}}
+\def\mybo{\begin{bmatrix}B_1\pd \\ B_1\pa \end{bmatrix}}
+\def\mybt{\begin{bmatrix}B_2\pd \\ 0 \end{bmatrix}}
+\def\myco{\begin{bmatrix}C_1\pd & C_1\pa \end{bmatrix}}
+\def\myct{\begin{bmatrix}C_2\pd & 0 \end{bmatrix}}
+\def\gpmt{\gamma^{-2}}
+\newcommand\tnsqrd[1]{ \| #1 \| _ 2^2}
+\def\sqrod{\tilde D^{\frac{1}{2}}}
+\def\msqrod{\tilde D^{-\frac{1}{2}}}
+\def\Xinf{\mathcal X _ \infty}
+\def\xinf{X _ \infty}
+$$
+
 * Descriptor systems have an ODE part and an algebraic part
- \begin{align*}
+$$
+\begin{split}
  \begin{bmatrix}
  I & 0 \\ 0 & N
  \end{bmatrix} \dot x 
@@ -29,25 +54,26 @@ bibliography:
  \begin{bmatrix}
  C^{\mathsf{d}}  & C^{\mathsf{a}}
  \end{bmatrix}x 
- \end{align*}
+\end{split}
+$$
 
 ## Transfer functions
 
-* in frequency domain
-\begin{align*}
-  \small
-  \begin{bmatrix}
+$$
+\begin{split}
+ G(s) &=  \begin{bmatrix}
     C^{\mathsf{d}}  & C^{\mathsf{a}}
   \end{bmatrix}
   \begin{bmatrix}
     sI-A & 0 \\ 0 & sN-I
   \end{bmatrix}^{-1} 
-  & \begin{bmatrix}
+   \begin{bmatrix}
     B\pd  \\ B\pa
   \end{bmatrix}\\
-  & = C\pd(sI-A)^{-1}B\pd + C\pa\sum_{i=0}^{\nu}(sN)^iB\pa \\
-  & = G\pd(s) + G\pa(s)
-\end{align*}
+  & \quad = C\pd(sI-A)^{-1}B\pd + C\pa\sum _ {i=0}^{\nu}(sN)^iB\pa \\
+  & \quad = G\pd(s) + G\pa(s)
+\end{split}
+$$
 
 * ODE part $G\pd$ -- the strictly proper part
 

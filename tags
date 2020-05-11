@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$\Hinf$-control of a Descriptor System with an Index-1 pencil	concept.md	/^# $\\Hinf$-control of a Descriptor System with an Index-1 pencil$/;"	h
+,m	locmappis.vim	/^map ,m ,w:!source makethedoc.sh<cr>$/;"	m
+As a descriptor system	concept.md	/^## As a descriptor system$/;"	h
+Conclusion	concept-slides.tex	/^\\end{frame}$/;"	s
+Conclusion	concept.md	/^# Conclusion$/;"	h
+Conclusion	concept.md	/^## Conclusion$/;"	h
+Descriptor systems	concept.md	/^## Descriptor systems$/;"	h
+Direct estimation of the $\Hinf$-performance gain	concept.md	/^# Direct estimation of the $\\Hinf$-performance gain$/;"	h
+For this presentation	concept.md	/^## For this presentation$/;"	h
+Introduction	concept-slides.tex	/^\\end{frame}$/;"	s
+Introduction	concept.md	/^# Introduction$/;"	h
+LTI with $D=0$	concept.md	/^## LTI with $D=0\$$/;"	h
+LTI with feed through	concept.md	/^## LTI with feed through$/;"	h
+MOR/Control with DAE-Riccati	concept.md	/^##  MOR\/Control with DAE-Riccati$/;"	h
+Main results	concept.md	/^## Main results$/;"	h
+Make it a Standard Plant	concept.md	/^## Make it a Standard Plant$/;"	h
+The basic equations	concept.md	/^## The basic equations$/;"	h
+The modified Hamiltonian	concept.md	/^## The modified Hamiltonian$/;"	h
+Transfer functions	concept.md	/^## Transfer functions$/;"	h
+What about the symmetric Riccati Equation	concept.md	/^## What about the symmetric Riccati Equation$/;"	h
+ctd.	concept.md	/^## ctd.$/;"	h
