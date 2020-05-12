@@ -37,7 +37,8 @@ $$
 \def\xinf{X _ \infty}
 $$
 
-* Descriptor systems have an ODE part and an algebraic part
+Descriptor systems have an ODE part and an algebraic part
+
 $$
 \begin{split}
  \begin{bmatrix}
@@ -56,6 +57,8 @@ $$
  \end{bmatrix}x 
 \end{split}
 $$
+
+(Note that $N$ is nilpotent and not invertible)
 
 ## Transfer functions
 
@@ -157,90 +160,7 @@ In this *index-1* case,
 
 3. The (projected) symmetric DAE Riccati simply neglects the feedthrough.
 
-<!-- ## Make it a Standard Plant
-
-Add the input to $u$ the performance output $w$:
-
-\begin{align*}
-  \small
-\left[
-\begin{array}{c|cc}
-\msEAwcf & \Bosf & \Btsf \\
-\hline\\[-.9em]
-\Cosf & 0 & \Dotsf \\
-\Ctsf & \Dtosf & 0 \\
-\end{array}
-\right],
-\end{align*}
-
-or, equivalently,
-
-\begin{align*}
-  \small
-\left[
-\begin{array}{c|cc}
--sI+J & \sfBo & \sfBt \\
-\hline\\[-.9em]
-\sfCo & \Doosf & \Dotsf \\
-\sfCt & \Dtosf & 0 \\
-\end{array}
-\right].
-\end{align*}
-
--->
-
-## LTI with $D=0$
-
-Consider the standard LTI case with $D=0$ with standard assumptions.
-
-Let $\gamma>0$ and $X_\infty$ be a stabilizing solution to the $\Hinf$-Riccati equation
-$$
-A^*X + XA - X(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0,
-$$
-
-then, for $x$ being a trajectory to 
-
-$$\dot x = Ax + B_1w + B_2u, \quad x(0)=0$$
-
-and 
-$$
-z = \begin{bmatrix} C_1x \\ u \end{bmatrix},
-$$
-
-## ctd.
-
-one derives 
-\begin{align*}
-  \small
-\frac{d}{dt}&x^*X_\infty x=  \\
-&= \dot x^* X_\infty x + x^* x_\infty \dot x \\
-&= (x^*A^*+w^*B_1^*+u^*B_2^*)X_\infty x + x^*X_\infty(Ax+B_1 w + B_2 u) \\
-&= -x^*C_1^*C_1x + x^*X_\infty(B_2B_2^* - \gpmt B_1B_1^*)X_\infty x + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
-&= -\|C_1x \|^2 + \|B_2 X_\infty x\|^2  - \gpmt\|B_1^*X_\infty x\|^2 + 2\langle w, B_1^* X_\infty x \rangle + 2\langle u, B_2^* X_\infty x \rangle \\
-&= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
-\end{align*}
-
-## ctd.
-
-\begin{footnotesize}
-\begin{align*}
-\frac{d}{dt}&x^*X_\infty x=  \\
-&= -\|z\|^2 + \gamma^2 \|w\|^2 - \gamma^2 \|w-\gpmt B_1^*X_\infty x \|^2 + \|u+B_2^* X_\infty u \|^2
-\end{align*}
-\end{footnotesize}
-
-Now choose $u=-B_2^*X_\infty x$. Then, for $w\in \mathcal L^2(0,\infty)$, also $x(t)\to 0$, as $t\to \infty$, and integration from $0$ to $\infty$ gives
-
-$$
-0 = -\tnsqrd{z} + \gamma^2 \tnsqrd{w}- \gamma^2 \tnsqrd{w-\gpmt B_1^*X_\infty x }
-$$
-or
-$$
-\tnsqrd{z} = \gamma^2 \tnsqrd{w}- \gamma^2 \tnsqrd{w-\gpmt B_1^*X_\infty x }
-$$
-i.e., $\| T_{zw} \| \leq \gamma$.
-
-## LTI with feed through
+## LTI with feedthrough
 
 Consider 
 
@@ -248,21 +168,14 @@ $$\dot x = Ax + B_1w + B_2u, \quad x(0)=0$$
 
 and 
 $$
-z = \begin{bmatrix} C_1 x + D_{11}w \\ u \end{bmatrix},
-$$
-
-Necessary for a closed-loop $\| T_{zw} \|_\infty < \gamma$: 
-
-$$
-\sigma_{\max{}}(D_{11}) < \gamma^2, \quad\text{implying that}\quad -\gamma^2 I+D_{11}^*D_{11} \text{ is invertible}.
+z = \begin{bmatrix} C_1 x + D _ {11}w \\ u \end{bmatrix}.
 $$
 
 ## The modified Hamiltonian
 
-Then, with $X_\infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., @ZhoDG96, Ch. 17.4]
-
-\begin{equation*}
-  \small
+With $X _ \infty$ being a stabilizing solution to the Riccati equation associated with the Hamiltonian pencil^[see, e.g., @ZhoDG96, Ch. 17.4]
+$$
+\small
 \begin{split}
 &\begin{bmatrix}
 -sI+A & 0 \\
@@ -270,20 +183,12 @@ Then, with $X_\infty$ being a stabilizing solution to the Riccati equation assoc
 \end{bmatrix} \\
 &-\begin{bmatrix}
 - B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd & B_{2}\pd {B_{2}\pd}^* + B_{1}\pd (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*\\
-- {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd &  {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} {B_{1}\pd}^*
+- {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} D_{11}^* C_{1}\pd &  {C_{1}\pd}^* D_{11} (- \gamma^2 + D_{11}^* D_{11})^{-1} {B _ {1}\pd}^*
 \end{bmatrix}
 \end{split}
-\end{equation*}
-
-and with $u=-B_2X_\infty x$ 
-<!-- from $\int_0^\infty \frac{d}{dt}x^*X_\infty x dt = 0$ -->
-and $I-\gpmt D_{11}^*D_{11}=\sqrod\sqrod$, one derives
-that
-\begin{align*}
-  \small
-\tnsqrd{z} =& \tnsqrd{C_1x+D_{11}w}+\tnsqrd{u} \\
-&= \gamma^2 \tnsqrd{w} - \gamma^2\tnsqrd{\sqrod w - \msqrod D_{11}^*C_1 x - \gpmt \msqrod B_1 X_\infty x}.
-\end{align*}
+$$
+the feedback $u=-B_2X _ \infty x$ 
+solves the robust regulator problem.
 
 ## As a descriptor system
 
@@ -296,10 +201,15 @@ z = \begin{bmatrix} \myco x  \\ u \end{bmatrix}.
 $$
 (note that there is no $D$!)
 
-Define the feedback as $-\mybt \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equation
+## The DAE Riccati
+
+Define the feedback as $u = -\mybt^ * \Xinf x$, where $\Xinf$ is an admissible solution to the nonsymmetric generalized Riccati equation
 $$
-\mathcal A^* X + X^* \mathcal A - X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \quad \mathcal E^*X = X^*\mathcal E.
+\begin{split}
+\mathcal A^* X + X^* \mathcal A - X^*(B_2B_2^* - \gpmt B_1B_1^*)X + C_1^*C_1 = 0, \\ \quad \mathcal E^*X = X^*\mathcal E.
+\end{split}
 $$
+
 
 -----
 
@@ -337,22 +247,23 @@ Thus,
 The projected^[see, e.g., @BenS14 ] Riccati equation read
 
 $$
-\mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A - X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0, \quad X = PXP^*.
+\mathcal A^*X\mathcal E + \mathcal E^*X\mathcal A - X(B_2B_2^* - \gpmt B_1B_1^*)X + PC_1^*C_1P^* = 0.
 $$
 
-The special coordinates with $\mathcal E=\indoe$ and $\mathcal A=\indoa$ imply that
+With $(\mathcal E, \mathcal A)$ in the Weierstra&szlig; Canonical Form, we infer that
 
-* $P=P^*=\indoe$ and $\mathcal X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
+ * $P=P^*=\indoe$ and $\mathcal X = \begin{bmatrix}X_{11} & 0 \\ 0 & 0 \end{bmatrix}$
+ * and that the $X_{11}$ of a stabilizing solution $\mathcal X$ 
+ * coincides with $X_\infty$ with $D_{11}=0$,
 
-and that $X_{11}$ of a stabilizing solution $\mathcal X$ 
+. . .
 
-* coincides with $X_\infty$ with $D_{11}=0$,
-* so that the feedback $u=-B_2\mathcal Xx$ ensures $\gamma$-stability 
+ * so that the feedback $u=-B_2\mathcal Xx$ ensures $\gamma$-stability 
 <!-- that
 $$\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} = 
 \gamma^2\tnsqrd{w} - \gamma^2 \tnsqrd{w-\gpmt B_1^*X_{11}x},$$ -->
 <!-- \tnsqrd{z-D_{11} w} = -->
-* only for the case of no feed through. 
+ * only for the case of no feed through. 
 
 # Conclusion
 ## Conclusion
