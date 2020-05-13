@@ -1,8 +1,9 @@
 ---
 title: Riccati-based $\mathcal H _ \infty$-control for DAEs
-author: Jan Heiland
+author: 
+- Jan Heiland
+- Peter Benner
 date: \today
-institute: CSC Workshop Ringberg 2019
 bibliography: 
 - hinf-ric-talk.bib
 # - bib-dae-hinf.bib
@@ -82,15 +83,9 @@ $$
 
 * algebraic part $G\pa$ -- polynomial part <!--(only proper ($\nu=1$) and more)-->
 
-##  MOR/Control with DAE-Riccati
+## Control with DAE-Riccati
 
-* Reduce/control the ODE part, keep the polynomial part
-
-* see @morHeiSS08 et al. that follows these lines [Benner, Goyal, Gugercin, Heiland, Stykel, Weichelt, ...]
-
-* for model reduction -- no objections 
-
-    + see the $B\pa \neq 0$ section in Heinkenschloss et al.
+* Typically done: control the ODE part, keep the polynomial part
 
 * for control -- OK, as long as the polynomial part is zero
 
@@ -98,7 +93,7 @@ $$
     + if not, the Riccatis need to consider the algebraic part
     + see, e.g., @MoeRS11
 
-# $\Hinf$-control of a Descriptor System with an Index-1 pencil
+# $\Hinf$-control 
 
 ## The basic equations
 
@@ -110,14 +105,24 @@ $$
 
 * generally written as $\Sigma \sim (\mathcal E,\mathcal A,[B_1,B_2],[C_1,C_2],D)$
 
+## The $\mathcal H _ \infty$ control problem
+
+* For now, we assume that we can do state-feedback.
+
+* Then the suboptimal $\Hinf$ control problem reads
+
+    1. find $\gamma$ and $K$ such that $(\mathcal E,\mathcal A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
+
+    2. and such that, with $u=-B_2Kx$, the map of the perturbance to the performance output is bounded, i.e. $$\|z\|_2 < \gamma \|w\|_2$$
+
+-----
+
 * **Assumption**: $(\mathcal E, \mathcal A)$ is of index 1
 
 * **wlog**: Weierstra&szlig; Canonical Form
 $$
 \Sigma\sim \bigl(\indoe,\indoa,\genbobt,\gencoct,D\bigr)
 $$
-
------
 
 
 * **wlog**: $D=0$:
@@ -139,17 +144,7 @@ $$
   \bigr)
 $$
 
-# Direct estimation of the $\Hinf$-performance gain
-
-## For this presentation
-
-* We assume that we can do state-feedback,
-
-* then the suboptimal $\Hinf$ control problem reads
-
-    1. find $\gamma$ and $K$ such that $(\mathcal E,\mathcal A-B_2K)$ is admissible^[i.e. *index-1* and stable in the ODE part]
-
-    2. and such that, with $u=-B_2Kx$, the map of the perturbance to the performance output is bounded, i.e. $$\|z\|_2 < \gamma \|w\|_2$$
+# Equivalence of DAE and ODE Riccati Feedback
 
 
 ## Main results
@@ -275,6 +270,18 @@ $$\small \tnsqrd{C_1\pd x\pd} + \tnsqrd{u} =
 * For state-feedback the suboptimal $\Hinf$-controller can be defined and estimated explicitly
 
 * The non-symmetric Riccati approach coincides with the standard results
+
+## Спасибо
+
+### Thank you
+
+### Dankesch&ouml;n
+
+[www.mpi-magdeburg.mpg.de/823023/cacsd](https://www.mpi-magdeburg.mpg.de/823023/cacsd)
+
+[www.janheiland.de](https://janheiland.de)
+
+[heiland@mpi-magdeburg.mpg.de](mailto:heiland@mpi-magdeburg.mpg.de)
 
 ## References
 
